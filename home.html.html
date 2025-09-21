@@ -1186,11 +1186,11 @@
             yPosition += 12;
             
             if (budgetUsed > 90) {
-                doc.text('Status: ⚠️ High spending - Review expenses', 30, yPosition);
+                doc.text('Status: High spending - Review expenses', 30, yPosition);
             } else if (budgetUsed > 75) {
-                doc.text('Status: ⚡ Moderate spending - Monitor closely', 30, yPosition);
+                doc.text('Status: Moderate spending - Monitor closely', 30, yPosition);
             } else {
-                doc.text('Status: ✅ Good spending - Within limits', 30, yPosition);
+                doc.text('Status: Good spending - Within limits', 30, yPosition);
             }
             
             doc.save(`budgetwise_report_${new Date().toISOString().split('T')[0]}.pdf`);
@@ -1199,46 +1199,10 @@
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
-            initializeLoginPage();
             showPage('login');
         });
 
-        // Initialize enhanced login page features
-        function initializeLoginPage() {
-            // Add enhanced floating animation to financial icons
-            document.querySelectorAll('.financial-icon').forEach((icon, index) => {
-                icon.style.animationDelay = `${index * 0.3}s`;
-                
-                // Add click effect
-                icon.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Add typing effect to the tagline
-            const tagline = document.querySelector('.login-logo p');
-            if (tagline) {
-                const text = tagline.textContent;
-                tagline.textContent = '';
-                let i = 0;
-                
-                setTimeout(() => {
-                    const typeEffect = setInterval(() => {
-                        if (i < text.length) {
-                            tagline.textContent += text.charAt(i);
-                            i++;
-                        } else {
-                            clearInterval(typeEffect);
-                        }
-                    }, 50);
-                }, 1000);
-            }
-        }
-
-        // Add some interactive enhancements
+        // Add interactive mouse effects for particles
         document.addEventListener('mousemove', function(e) {
             const particles = document.querySelectorAll('.particle');
             const mouseX = e.clientX / window.innerWidth;
